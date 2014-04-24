@@ -27,7 +27,8 @@ int main(int argc, char **argv)
       fprintf(stderr, "mysql_init() failed\n");
       exit(1);
   }  
-  
+
+//Use argv[1] for mysql password
   if (mysql_real_connect(con, "localhost", "redmine", argv[1], 
           "redmine", 0, NULL, 0) == NULL) 
   {

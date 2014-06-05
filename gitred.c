@@ -123,13 +123,14 @@ int repository(char *zz, char *qq)
 		   count++;
         	   len = k;
 		   if (count == countx){
-    			for(int k = rl; k < len; k++)
+    			for(int kl = rl; kl < len; kl++)
     			{
-        			repodir[zl] = qq[k];
+        			repodir[zl] = qq[kl];
         			zl++;
     			}
+			printf("|repodir %s\n", repodir);//row[i] ? row[i] : "NULL"); 
     			strcat(repo, repodir);
-			printf("|if %s|\n", repo);//row[i] ? row[i] : "NULL"); 
+			printf("|if %s| %s| %s\n", GIT, repo, repoclone);//row[i] ? row[i] : "NULL"); 
 			mdir(GIT, repo, repoclone);
 		   }else{
     			for(int k = repol; k < len; k++)
@@ -142,6 +143,7 @@ int repository(char *zz, char *qq)
 			printf("|else %s|\n", repo);//row[i] ? row[i] : "NULL"); 
 			if (mkdir(repo, S_IRWXU|S_IRGRP|S_IXGRP|S_IROTH|S_IXOTH) != 0)
 				perror("mkdir() error");
+    			memset(&repodir[0], 0, sizeof(repodir));
 		   }
     		}
 	}
